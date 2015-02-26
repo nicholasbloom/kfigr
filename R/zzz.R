@@ -18,6 +18,7 @@
           invisible(index(options$label, options$anchor))
           lab <- figr(options$label,link=FALSE,prefix=TRUE,type=options$anchor)
           lab <- paste(lab,". ",sep='')
+          print(lab)
           return(lab)
         }
       }), envir=getNamespace('knitr'))
