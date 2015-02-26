@@ -10,6 +10,19 @@
         paste('<a name="', options$label, '"></a>', sep='')
       }
     }), envir=getNamespace('knitr'))
+
+  # Auto-Generate Label
+  evalq(
+    knit_hooks$set(autolab = function(before, options, envir) {
+      if (before){
+        if(autolab){
+          invisible(index(options$label, options$anchor))
+          lab <- figr(options$label,link=FALSE,prefix=TRUE,type=options$anchor)
+          lab <- paste(lab,". ",sep='')
+          return(lab)
+          }
+        }}), envir=getNamespace('knitr'))
+
   anchorenv <- new.env(parent=getNamespace("kfigr"))
   assign("anchorenv", anchorenv, envir=getNamespace("kfigr"))
   assign("types", character(0), envir=anchorenv)
