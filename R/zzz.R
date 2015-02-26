@@ -15,12 +15,9 @@
   evalq(
     knit_hooks$set(autolab = function(before, options, envir) {
       if (before){
-          invisible(index(options$label, options$anchor))
-          lab <- figr(options$label,link=FALSE,prefix=TRUE,type=options$anchor)
-          lab <- paste(lab,". ",sep='')
+          "Label"
         }
-      return(lab)
-      }), envir=getNamespace('knitr'))
+      }))
 
   anchorenv <- new.env(parent=getNamespace("kfigr"))
   assign("anchorenv", anchorenv, envir=getNamespace("kfigr"))
